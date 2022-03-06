@@ -1,5 +1,3 @@
-let capture = false;
-const noFrames = 300;
 let grid;
 let size = 7;
 
@@ -9,26 +7,12 @@ function setup() {
 }
 
 function draw() {
-  if (frameCount ==  1) {
-    capture = true;
-    capturer.start();
-  }
   grid.drawGrid();
   grid.countAllNeighbors();
   grid.updateStates();
+  grid.addCircle(12);
   // grid.addCenter();
-  grid.addCircle(5);
-  // grid.addCircle(4);
   // grid.addCircle(5);
-  // grid.addCircle(10);
-  if (capture){
-    capturer.capture( canvas ); // if capture is 'true', save the frame
-    if (frameCount - 1 == noFrames){ //stop and save after NUM_FRAMES
-        capturer.stop(); 
-        capturer.save(); 
-        noLoop(); 
-    }
-  }
 }
 
 
